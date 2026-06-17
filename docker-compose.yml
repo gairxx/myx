@@ -1,0 +1,40 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: bemusic
+      DB_USERNAME: bemusic
+      DB_PASSWORD: secret
+      REDIS_HOST: redis
+      APP_URL: http://localhost:8000
+      DEMO_ADMIN_EMAIL: admin@admin.com
+      DEMO_ADMIN_PASSWORD: admin
+    volumes:
+      - app_storage:/var/www/html/storage
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: bemusic
+      MYSQL_USER: bemusic
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
+    volumes:
+      - db_data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+
+volumes:
+  db_data:
+  app_storage:

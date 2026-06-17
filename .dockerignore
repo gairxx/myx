@@ -1,0 +1,10 @@
+.git
+.github
+node_modules
+website/node_modules
+website/vendor
+website/public/build
+website/storage/*.key
+website/.env
+website/tests
+website.zip

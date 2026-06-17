@@ -1,0 +1,16 @@
+{
+  "experimental": {
+    "gemmaModelRouter": {
+      "enabled": true
+    },
+    "gemma": true,
+    "modelSteering": true,
+    "contextManagement": true
+  },
+  "ui": {
+    "loadingPhrases": "witty",
+    "showHomeDirectoryWarning": false,
+    "showCompatibilityWarnings": false,
+    "showMemoryUsage": true
+  }
+}
